@@ -55,7 +55,9 @@ class Login extends CI_Controller {
 
 		else
 		{
-			echo "salah password";		}
+			$this->session->set_flashdata('error', 'Username atau Password Salah!');  
+			redirect('login');
+		}
 	}
 
 	function logout()
