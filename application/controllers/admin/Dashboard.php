@@ -23,20 +23,15 @@ class Dashboard extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('user');
+        if($this->session->userdata('logged_in') !== TRUE)
+        {
+            redirect('login');
+        }
     }
 
 	public function index()
 	{
-		if($this->user->logged_id())
-		{
-			//ini buat ke dashboard
-			$this->load->view('admin/dashboard');
-        }
-        else
-        {
-            redirect("login");
-        }
-		
+        $this->load->view('admin/dashboard');	
     }
     
     public function logout()
