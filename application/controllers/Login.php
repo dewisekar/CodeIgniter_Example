@@ -22,7 +22,8 @@ class Login extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('user');
+		$this->load->model('user');
+		$this->load->library('form_validation');
     }
 
 	public function index()
@@ -32,6 +33,15 @@ class Login extends CI_Controller {
 
 	function login()
 	{
+		$this->form_validation->set_rules('username','Username','required');
+		$this->form_validation->set_rules('password','Password','required');
+
+		if ($this->form_validation->run() == FALSE)
+		{
+			$this->session->set_flashdata('error', 'Username dan password harus terisi!' );
+			redirect('login');  
+		}
+
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		$where = array(
@@ -55,7 +65,7 @@ class Login extends CI_Controller {
 
 		else
 		{
-			$this->session->set_flashdata('error', 'Username atau Password Salah!');  
+			$this->session->set_flashdata('error', 'Username atau password salah!');  
 			redirect('login');
 		}
 	}

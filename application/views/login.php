@@ -43,18 +43,13 @@
                 <div class="bg-gd-dusk">
                     <div class="hero-static content content-full bg-white invisible" data-toggle="appear">
                         <!-- Header -->
-                        <?php if($this->session->flashdata('error')){ ?>  
-                            <div class="alert alert-danger text-center">  
-                                <?php echo $this->session->flashdata('error'); ?>  
-                            </div>  
-                        <?php } ?>  
                         <div class="py-30 px-5 text-center">
                             <a class="link-effect font-w700" href="index.html">
                                 <i class="si si-fire"></i>
                                 <span class="font-size-xl text-primary-dark">code</span><span class="font-size-xl">base</span>
                             </a>
-                            <h1 class="h2 font-w700 mt-50 mb-10">Welcome to Your Dashboard</h1>
-                            <h2 class="h4 font-w400 text-muted mb-0">Please sign in</h2>
+                            <h1 class="h2 font-w700 mt-50 mb-10">Sistem Informasi Pegawai</h1>
+                            <h2 class="h4 font-w400 text-muted mb-0">Silahkan masuk</h2>
                         </div>
                         <!-- END Header -->
 
@@ -64,6 +59,11 @@
                                 <!-- jQuery Validation (.js-validation-signin class is initialized in js/pages/op_auth_signin.js) -->
                                 <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
                                 <form class="js-validation-signin" action="<?php echo base_url() ?>login/login" method="post">
+                                    <?php if($this->session->flashdata('error')){ ?>  
+                                        <div class="alert alert-danger text-center">  
+                                            <?php echo $this->session->flashdata('error'); ?>  
+                                        </div>  
+                                    <?php } ?>    
                                     <div class="form-group row">
                                         <div class="col-12">
                                             <div class="form-material floating">
