@@ -55,4 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['login'] = 'login';
 $route['dashboard'] = 'admin/dashboard';
+$route['pegawai'] = 'admin/pegawai';
+$route['unit'] = 'admin/unit';
+$route['add-pegawai'] = 'admin/pegawai/showForm';
 

@@ -78,14 +78,14 @@
             <div class="content-side content-side-full">
                 <ul class="nav-main">
                     <li class="">
-                        <a href="<?php echo base_url() ?>dashboard" class="active"><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>
+                        <a href="<?php echo base_url() ?>dashboard" class=""><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>
                     </li>
                     <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Manajemen Pegawai</span></li>
                     <li class="">
                         <a href="<?php echo base_url() ?>pegawai" class=""><i class="fa fa-users"></i><span class="sidebar-mini-hide">Daftar Pegawai</span></a>
                     </li>
                     <li class="">
-                        <a href="<?php echo base_url() ?>add-pegawai" class=""><i class="fa fa-plus"></i><span class="sidebar-mini-hide">Tambah Pegawai</span></a>
+                        <a href="<?php echo base_url() ?>add-pegawai" class="active"><i class="fa fa-plus"></i><span class="sidebar-mini-hide">Tambah Pegawai</span></a>
                     </li>
                     <li>
                         <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-energy"></i><span class="sidebar-mini-hide">Elements</span></a>
@@ -107,6 +107,10 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Manajemen Unit</span></li>
+                    <li class="">
+                        <a href="<?php echo base_url() ?>unit" class=""><i class="si si-cup"></i><span class="sidebar-mini-hide">Daftar Unit</span></a>
+                    </li>
                 </ul>
             </div>
             <!-- END Side Navigation -->
@@ -120,9 +124,84 @@
 <main id="main-container">
     <!-- Page Content -->
     <div class="content">
-    
+        <!-- Bootstrap Forms Validation -->
+        <div class="block">
+            <div class="block-header block-header-default">
+                <h3 class="block-title">Tambah unit</h3>
+                <div class="block-options">
+                    
+                </div>
+            </div>
+            <div class="block-content">
+                <div class="row justify-content-center py-20">
+                    <div class="col-xl-6">
+                        <!-- jQuery Validation (.js-validation-bootstrap class is initialized in js/pages/be_forms_validation.js) -->
+                        <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
+                        <form class="js-validation-bootstrap" action="be_forms_validation.html" method="post">
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="val-username">NIP<span class="text-danger">*</span></label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="val-nama" name="val-nama" placeholder="Masukkan NIP...">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="val-username">Nama<span class="text-danger">*</span></label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Masukkan nama...">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="val-username">Tempat lahir<span class="text-danger">*</span></label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Masukkan tempat lahir...">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="val-username">Tanggal lahir<span class="text-danger">*</span></label>
+                                <div class="col-lg-8">
+                                    <input type="date" class="form-control" id="val-username" name="val-username" placeholder="Masukkan tempat lahir...">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="val-username">Jenis kelamin<span class="text-danger">*</span></label>
+                                <div class="col-8">
+                                    <div class="custom-control custom-radio custom-control-inline mb-5">
+                                        <input class="custom-control-input" type="radio" name="example-inline-radios" id="example-inline-radio1" value="option1" checked>
+                                        <label class="custom-control-label" for="example-inline-radio1">Laki-laki</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline mb-5">
+                                        <input class="custom-control-input" type="radio" name="example-inline-radios" id="example-inline-radio2" value="option2">
+                                        <label class="custom-control-label" for="example-inline-radio2">Perempuan</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="val-select2">Golongan <span class="text-danger">*</span></label>
+                                <div class="col-lg-8">
+                                    <select class="js-select2 form-control" id="val-select2" name="val-select2" style="width: 100%;" data-placeholder="Choose one..">
+                                        <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                        <option value="html">HTML</option>
+                                        <option value="css">CSS</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-8 ml-auto">
+                                    <button type="submit" class="btn btn-alt-primary">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- END Page Content -->
     </div>
     <!-- END Page Content -->
 </main>
+
+
 
 <?php $this->load->view("partials/footer.php") ?>

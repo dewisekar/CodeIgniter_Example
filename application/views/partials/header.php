@@ -1,4 +1,3 @@
-
 <!doctype html>
 <!--[if lte IE 9]>     <html lang="en" class="no-focus lt-ie10 lt-ie10-msg"> <![endif]-->
 <!--[if gt IE 9]><!--> <html lang="en" class="no-focus"> <!--<![endif]-->
@@ -6,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
-        <title>Codebase - Bootstrap 4 Admin Template &amp; UI Framework</title>
+        
 
         <meta name="description" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
         <meta name="author" content="pixelcave">
@@ -22,14 +21,15 @@
 
         <!-- Icons -->
         <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-        <link rel="shortcut icon" href="assets/img/favicons/favicon.png">
-        <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicons/favicon-192x192.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon-180x180.png">
-        <!-- END Icons -->
 
+        <!-- END Icons -->
+        <link rel="stylesheet" href="assets/js/plugins/select2/select2.min.css">
+        <link rel="stylesheet" href="assets/js/plugins/select2/select2-bootstrap.min.css">
         <!-- Stylesheets -->
         <!-- Codebase framework -->
         <link rel="stylesheet" id="css-main" href="assets/css/codebase.min.css">
+
+        
 
         <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
         <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/flat.min.css"> -->
@@ -136,7 +136,7 @@
                         <!-- User Dropdown -->
                         <div class="btn-group" role="group">
                             <button type="button" class="btn btn-rounded btn-dual-secondary" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                J. Smith<i class="fa fa-angle-down ml-5"></i>
+                                <?php echo $this->session->userdata('nama'); ?><i class="fa fa-angle-down ml-5"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-right min-width-150" aria-labelledby="page-header-user-dropdown">
                                 <a class="dropdown-item" href="be_pages_generic_profile.html">
@@ -157,9 +157,8 @@
                                     <i class="si si-wrench mr-5"></i> Settings
                                 </a>
                                 <!-- END Side Overlay -->
-
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="op_auth_signin.html">
+                                <a class="dropdown-item" href="<?php echo base_url() ?>admin/dashboard/logout">
                                     <i class="si si-logout mr-5"></i> Sign Out
                                 </a>
                             </div>
@@ -167,11 +166,6 @@
                         <!-- END User Dropdown -->
 
                         <!-- Toggle Side Overlay -->
-                        <!-- Layout API, functionality initialized in Codebase() -> uiApiLayout() -->
-                        <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="side_overlay_toggle">
-                            <i class="fa fa-tasks"></i>
-                        </button>
-                        <!-- END Toggle Side Overlay -->
                     </div>
                     <!-- END Right Section -->
                 </div>

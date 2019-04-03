@@ -23,9 +23,21 @@
         <script src="assets/js/codebase.js"></script>
 
         <!-- Page JS Plugins -->
-        <script src="assets/js/plugins/chartjs/Chart.bundle.min.js"></script>
-
-        <!-- Page JS Code -->
-        <script src="assets/js/pages/be_pages_dashboard.js"></script>
+        <script src="assets/js/plugins/select2/select2.full.min.js"></script>
+        <script src="assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>
+        <script src="assets/js/plugins/jquery-validation/additional-methods.min.js"></script>
+        <script>
+            jQuery(function () {
+                // Init page helpers (Select2 plugin)
+                Codebase.helpers('select2');
+            });
+        </script>
+        <script>
+            jQuery(function () {
+                // Init page helpers (Table Tools helper)
+                Codebase.helpers('table-tools');
+            });
+        </script>
+        <script src="assets/js/pages/be_forms_validation.js"></script>
     </body>
 </html>
