@@ -21,17 +21,23 @@ class Unit extends CI_Controller {
 
     public function __construct()
     {
-        parent::__construct();
-        $this->load->model('user');
+		parent::__construct();
+		$this->load->model('user');
+		$this->load->model('unitmodel');
         if($this->session->userdata('logged_in') !== TRUE)
         {
             redirect('login');
         }
-    }
-
+	}
+	
 	public function index()
 	{
-        $this->load->view('admin/unit');	
-    }
-    
+		$data['unit'] = $this->unitmodel->get_unit()->result();
+        $this->load->view('admin/unit', $data);	
+	}
+	
+	public function addUnit()
+	{
+
+	}    
 }

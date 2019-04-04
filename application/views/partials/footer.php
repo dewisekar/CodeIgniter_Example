@@ -39,5 +39,17 @@
             });
         </script>
         <script src="assets/js/pages/be_forms_validation.js"></script>
+        <script>
+            $('input[type=radio][name=bagian]').change(function() {
+            if (this.value == '1') {
+                document.getElementById('bagiandari').disabled = false;
+                document.getElementById('bagiandari').required = true;
+            }
+            else if (this.value == '0') {
+                document.getElementById('bagiandari').disabled = true;
+                document.getElementById('bagiandari').required = false;
+            }
+        });
+</script>
     </body>
 </html>

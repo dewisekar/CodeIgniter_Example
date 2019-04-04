@@ -139,46 +139,28 @@
                         <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
                         <form class="js-validation-bootstrap" action="be_forms_validation.html" method="post">
                             <div class="form-group row">
-                                <label class="col-lg-4 col-form-label" for="val-username">NIP<span class="text-danger">*</span></label>
+                                <label class="col-lg-4 col-form-label" for="val-username">Nama unit<span class="text-danger">*</span></label>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="val-nama" name="val-nama" placeholder="Masukkan NIP...">
+                                    <input type="text" class="form-control" id="val-username" name="nama-unit" placeholder="Masukkan nama unit..." required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-lg-4 col-form-label" for="val-username">Nama<span class="text-danger">*</span></label>
-                                <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Masukkan nama...">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-lg-4 col-form-label" for="val-username">Tempat lahir<span class="text-danger">*</span></label>
-                                <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Masukkan tempat lahir...">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-lg-4 col-form-label" for="val-username">Tanggal lahir<span class="text-danger">*</span></label>
-                                <div class="col-lg-8">
-                                    <input type="date" class="form-control" id="val-username" name="val-username" placeholder="Masukkan tempat lahir...">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-lg-4 col-form-label" for="val-username">Jenis kelamin<span class="text-danger">*</span></label>
+                                <label class="col-lg-4 col-form-label" for="val-username">Apakah unit ini bagian dari unit lain?<span class="text-danger">*</span></label>
                                 <div class="col-8">
                                     <div class="custom-control custom-radio custom-control-inline mb-5">
-                                        <input class="custom-control-input" type="radio" name="example-inline-radios" id="example-inline-radio1" value="option1" checked>
-                                        <label class="custom-control-label" for="example-inline-radio1">Laki-laki</label>
+                                        <input class="custom-control-input" type="radio" name="bagian" id="example-inline-radio1" value="0" checked>
+                                        <label class="custom-control-label" for="example-inline-radio1">Tidak</label>
                                     </div>
                                     <div class="custom-control custom-radio custom-control-inline mb-5">
-                                        <input class="custom-control-input" type="radio" name="example-inline-radios" id="example-inline-radio2" value="option2">
-                                        <label class="custom-control-label" for="example-inline-radio2">Perempuan</label>
+                                        <input class="custom-control-input" type="radio" name="bagian" id="example-inline-radio2" value="1">
+                                        <label class="custom-control-label" for="example-inline-radio2">Ya</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-lg-4 col-form-label" for="val-select2">Golongan <span class="text-danger">*</span></label>
+                                <label class="col-lg-4 col-form-label" for="val-select2">Bagian dari <span class="text-danger">*</span></label>
                                 <div class="col-lg-8">
-                                    <select class="js-select2 form-control" id="val-select2" name="val-select2" style="width: 100%;" data-placeholder="Choose one..">
+                                    <select class="js-select2 form-control" id="bagiandari" name="bagiandari" style="width: 100%;" data-placeholder="Choose one.." disabled>
                                         <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                         <option value="html">HTML</option>
                                         <option value="css">CSS</option>
@@ -193,9 +175,11 @@
                         </form>
                     </div>
                 </div>
-
             </div>
         </div>
+        <?php foreach ($unit as $bro): ?>
+            <?php echo $bro->nama_unit; ?>
+        <?php endforeach; ?>
     </div>
     <!-- END Page Content -->
     </div>
