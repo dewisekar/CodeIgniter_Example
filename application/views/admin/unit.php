@@ -137,7 +137,7 @@
                     <div class="col-xl-6">
                         <!-- jQuery Validation (.js-validation-bootstrap class is initialized in js/pages/be_forms_validation.js) -->
                         <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                        <form class="js-validation-bootstrap" action="be_forms_validation.html" method="post">
+                        <form class="js-validation-bootstrap" action="<?php base_url() ?>admin/unit/addUnit" method="post">
                             <div class="form-group row">
                                 <label class="col-lg-4 col-form-label" for="val-username">Nama unit<span class="text-danger">*</span></label>
                                 <div class="col-lg-8">
@@ -162,14 +162,15 @@
                                 <div class="col-lg-8">
                                     <select class="js-select2 form-control" id="bagiandari" name="bagiandari" style="width: 100%;" data-placeholder="Choose one.." disabled>
                                         <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                        <option value="html">HTML</option>
-                                        <option value="css">CSS</option>
+                                        <?php foreach ($unit as $bro): ?>
+                                            <option value="<?php echo $bro->id_unit; ?>"> <?php echo $bro->nama_unit; ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-lg-8 ml-auto">
-                                    <button type="submit" class="btn btn-alt-primary">Submit</button>
+                                    <button type="submit" name="submit" value="submit" class="btn btn-alt-primary">Tambah</button>
                                 </div>
                             </div>
                         </form>

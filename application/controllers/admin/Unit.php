@@ -24,10 +24,10 @@ class Unit extends CI_Controller {
 		parent::__construct();
 		$this->load->model('user');
 		$this->load->model('unitmodel');
-        if($this->session->userdata('logged_in') !== TRUE)
-        {
-            redirect('login');
-        }
+		if($this->session->userdata('logged_in') !== TRUE)
+		{
+			redirect('login');
+		}
 	}
 	
 	public function index()
@@ -38,6 +38,12 @@ class Unit extends CI_Controller {
 	
 	public function addUnit()
 	{
-
+		if($this->input->post('submit'))
+		{
+			$this->unitmodel->add_unit();
+			redirect('/unit');
+		}
+		echo $this->input->post('submit');
+	
 	}    
 }
