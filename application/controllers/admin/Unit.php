@@ -33,7 +33,13 @@ class Unit extends CI_Controller {
 	public function index()
 	{
 		$data['unit'] = $this->unitmodel->get_unit()->result();
-        $this->load->view('admin/unit', $data);	
+		$bye = array();
+		array_push($bye, $this->get_unit2($bye));
+		$data['lol'] = array($bye);
+		$this->load->view('admin/unit', $data);
+		
+	
+		
 	}
 	
 	public function addUnit()
@@ -43,7 +49,35 @@ class Unit extends CI_Controller {
 			$this->unitmodel->add_unit();
 			redirect('/unit');
 		}
-		echo $this->input->post('submit');
+		echo $this->input->post('submit');	
+	}
+
+	function get_unit2(&$arr)
+	{
+		$data = $this->unitmodel->getUnit();
+		foreach($data as $menu)
+		{	
+			array_push($arr, '<option value="'. $menu->id_unit .'">'.$menu->nama_unit.'</option>');			
+			if(!empty($menu->sub))
+			{					
+				$this->fetch_sub_menu($menu->sub, $arr);	
+			}		
 	
-	}    
+		}
+	}
+
+	function fetch_sub_menu($sub_menu, &$arr)
+	{
+		foreach($sub_menu as $menu)
+		{	
+			array_push($arr, '<option value="'. $menu->id_unit .'">'.$menu->nama_unit.'</option>');				
+			if(!empty($menu->sub))
+			{		
+				$this->fetch_sub_menu($menu->sub, $arr);	
+			}		
+	
+		}
+	
+	}
+	
 }

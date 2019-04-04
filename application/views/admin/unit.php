@@ -162,9 +162,7 @@
                                 <div class="col-lg-8">
                                     <select class="js-select2 form-control" id="bagiandari" name="bagiandari" style="width: 100%;" data-placeholder="Choose one.." disabled>
                                         <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                        <?php foreach ($unit as $bro): ?>
-                                            <option value="<?php echo $bro->id_unit; ?>"> <?php echo $bro->nama_unit; ?></option>
-                                        <?php endforeach; ?>
+                                        <?php print_r($lol) ?>
                                     </select>
                                 </div>
                             </div>
@@ -178,13 +176,11 @@
                 </div>
             </div>
         </div>
-        <?php foreach ($unit as $bro): ?>
-            <?php echo $bro->nama_unit; ?>
-        <?php endforeach; ?>
     </div>
     <!-- END Page Content -->
+    
+ 
     </div>
-    <!-- END Page Content -->
 </main>
 
 
