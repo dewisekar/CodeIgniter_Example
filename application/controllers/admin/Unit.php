@@ -51,6 +51,12 @@ class Unit extends CI_Controller {
 		echo $this->input->post('submit');	
 	}
 
+	public function deleteUnit($id)
+	{
+		$this->unitmodel->delete_unit($id);
+		redirect('/unit');
+	}
+
 	function get_unit()
 	{	$arr = '';
 		$data = $this->db->get_where('unit',  array('id_parent' => 0))->result();

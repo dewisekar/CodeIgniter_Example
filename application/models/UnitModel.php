@@ -26,4 +26,20 @@ class UnitModel extends CI_Model
         }
         $this->db->insert('unit', $data);
     }
+
+    function delete_unit($id)
+    {
+        
+        $data = $this->db->get_where('unit',  array('id_parent' => $id));
+        $numrows = $data->num_rows();
+        $this->db->delete('unit', array('id_unit' => $id)); 
+        if ($numrows > 0)
+        {
+            foreach($data->result() as $menu)
+            {
+               $this->delete_unit($menu->id_unit);
+            }
+        }
+
+    }
 }
