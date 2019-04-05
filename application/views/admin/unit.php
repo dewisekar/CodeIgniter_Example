@@ -109,7 +109,7 @@
                     </li>
                     <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Manajemen Unit</span></li>
                     <li class="">
-                        <a href="<?php echo base_url() ?>unit" class=""><i class="si si-cup"></i><span class="sidebar-mini-hide">Daftar Unit</span></a>
+                        <a href="<?php echo base_url() ?>unit" class=""><i class="si si-cup"></i><span class="sidebar-mini-hide">Kelola Unit</span></a>
                     </li>
                 </ul>
             </div>
@@ -135,6 +135,11 @@
             <div class="block-content">
                 <div class="row justify-content-center py-20">
                     <div class="col-xl-6">
+                        <?php if($this->session->flashdata('success')){ ?>  
+                            <div class="alert alert-success text-center">  
+                                <?php echo $this->session->flashdata('success'); ?>  
+                            </div>  
+                        <?php } ?> 
                         <!-- jQuery Validation (.js-validation-bootstrap class is initialized in js/pages/be_forms_validation.js) -->
                         <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
                         <form class="js-validation-bootstrap" action="<?php base_url() ?>admin/unit/addUnit" method="post">
@@ -176,6 +181,134 @@
                 </div>
             </div>
         </div>
+         <!-- Table -->
+         <div class="block">
+            <div class="block-header block-header-default">
+                <h3 class="block-title">Table</h3>
+                <div class="block-options">
+                    <div class="block-options-item">
+                        <code>.table</code>
+                    </div>
+                </div>
+            </div>
+            <div class="block-content">
+                <table class="table table-vcenter">
+                    <thead>
+                        <tr>
+                            <th class="text-center" style="width: 50px;">#</th>
+                            <th>Name</th>
+                            <th class="d-none d-sm-table-cell" style="width: 15%;">Access</th>
+                            <th class="text-center" style="width: 100px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="text-center" scope="row">1</th>
+                            <td>Susan Day</td>
+                            <td class="d-none d-sm-table-cell">
+                                <span class="badge badge-danger">Disabled</span>
+                            </td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-center" scope="row">2</th>
+                            <td>Jose Wagner</td>
+                            <td class="d-none d-sm-table-cell">
+                                <span class="badge badge-success">VIP</span>
+                            </td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-center" scope="row">3</th>
+                            <td>Jose Wagner</td>
+                            <td class="d-none d-sm-table-cell">
+                                <span class="badge badge-warning">Trial</span>
+                            </td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-center" scope="row">4</th>
+                            <td>Jose Parker</td>
+                            <td class="d-none d-sm-table-cell">
+                                <span class="badge badge-warning">Trial</span>
+                            </td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-center" scope="row">5</th>
+                            <td>Thomas Riley</td>
+                            <td class="d-none d-sm-table-cell">
+                                <span class="badge badge-success">VIP</span>
+                            </td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-center" scope="row">6</th>
+                            <td>Judy Ford</td>
+                            <td class="d-none d-sm-table-cell">
+                                <span class="badge badge-info">Business</span>
+                            </td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- END Table -->
     </div>
     <!-- END Page Content -->
     

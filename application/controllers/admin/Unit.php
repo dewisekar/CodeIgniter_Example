@@ -47,6 +47,7 @@ class Unit extends CI_Controller {
 		if($this->input->post('submit'))
 		{
 			$this->unitmodel->add_unit();
+			$this->session->set_flashdata('success', 'Unit berhasil ditambahkan!');  
 			redirect('/unit');
 		}
 		echo $this->input->post('submit');	
@@ -60,20 +61,20 @@ class Unit extends CI_Controller {
 			array_push($arr, '<option value="'. $menu->id_unit .'">'.$menu->nama_unit.'</option>');			
 			if(!empty($menu->sub))
 			{					
-				$this->fetch_sub_menu($menu->sub, $arr);	
+				$this->fetch_sub_menu($menu->sub, $arr, '-');	
 			}		
 	
 		}
 	}
 
-	function fetch_sub_menu($sub_menu, &$arr)
+	function fetch_sub_menu($sub_menu, &$arr, $ngok)
 	{
 		foreach($sub_menu as $menu)
 		{	
-			array_push($arr, '<option value="'. $menu->id_unit .'">'.$menu->nama_unit.'</option>');				
+			array_push($arr, '<option value="'. $menu->id_unit .'">'.$ngok.$menu->nama_unit.'</option>');				
 			if(!empty($menu->sub))
 			{		
-				$this->fetch_sub_menu($menu->sub, $arr);	
+				$this->fetch_sub_menu($menu->sub, $arr, $ngok.'-');	
 			}		
 	
 		}
