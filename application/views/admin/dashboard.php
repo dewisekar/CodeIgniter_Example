@@ -105,11 +105,11 @@
                             <li>
                                 <a href="be_ui_color_themes.html">Color Themes</a>
                             </li>
-                        </ul>
+                        </ul>                        
                     </li>
                     <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Manajemen Unit</span></li>
                     <li class="">
-                        <a href="<?php echo base_url() ?>unit" class=""><i class="si si-cup"></i><span class="sidebar-mini-hide">Daftar Unit</span></a>
+                        <a href="<?php echo base_url() ?>unit" class=""><i class="si si-cup"></i><span class="sidebar-mini-hide">Kelola Unit</span></a>
                     </li>
                 </ul>
             </div>

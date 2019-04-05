@@ -53,8 +53,12 @@ class Unit extends CI_Controller {
 
 	public function deleteUnit($id)
 	{
-		$this->unitmodel->delete_unit($id);
-		redirect('/unit');
+		if($this->input->post('submit'))
+		{
+			$this->unitmodel->delete_unit($id);
+			$this->session->set_flashdata('success', 'Unit dan subunitnya berhasil dihapus!');  
+			redirect('/unit');
+		}
 	}
 
 	function get_unit()
@@ -105,7 +109,7 @@ class Unit extends CI_Controller {
 						<i class="fa fa-pencil"></i>
 					</button>
 					<button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modal-fadein'.$menu->id_unit.'">
-						<i class="fa fa-times"></i>
+						<i class="fa fa-trash"></i>
 					</button>
 				</div>
 			</td>
@@ -115,7 +119,7 @@ class Unit extends CI_Controller {
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="block block-themed block-transparent mb-0">
-							<div class="block-header bg-primary-dark">
+							<div class="block-header bg-pulse-light">
 								<h3 class="block-title">Apakah anda yakin anda ingin menghapus unit ini? </h3>
 								<div class="block-options">
 									<button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
@@ -129,10 +133,12 @@ class Unit extends CI_Controller {
 							</div>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-alt-success" data-dismiss="modal">
-								<i class="fa fa-check"></i> Perfect
-							</button>
+							<button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Cancel</button>
+							<form action="'.base_url().'admin/unit/deleteUnit/'.$menu->id_unit.'" method="post">
+								<button type="submit" name="submit" class="btn btn-alt-danger"  value="submit">
+									<i class="fa fa-trash"></i> Hapus
+								</button>
+							</form
 						</div>
 					</div>
 				</div>
@@ -163,7 +169,7 @@ class Unit extends CI_Controller {
 						<i class="fa fa-pencil"></i>
 					</button>
 					<button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modal-fadein'.$menu->id_unit.'">
-						<i class="fa fa-times"></i>
+						<i class="fa fa-trash"></i>
 					</button>
 				</div>
 			</td>
@@ -173,7 +179,7 @@ class Unit extends CI_Controller {
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="block block-themed block-transparent mb-0">
-							<div class="block-header bg-primary-dark">
+							<div class="block-header bg-pulse-light">
 								<h3 class="block-title">Apakah anda yakin anda ingin menghapus unit ini? </h3>
 								<div class="block-options">
 									<button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
@@ -187,10 +193,12 @@ class Unit extends CI_Controller {
 							</div>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-alt-success" data-dismiss="modal">
-								<i class="fa fa-check"></i> Perfect
-							</button>
+							<button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Cancel</button>
+							<form action="'.base_url().'admin/unit/deleteUnit/'.$menu->id_unit.'" method="post">
+								<button type="submit" name="submit" class="btn btn-alt-danger" value="submit">
+									<i class="fa fa-trash"></i> Hapus
+								</button>
+							</form
 						</div>
 					</div>
 				</div>
@@ -205,7 +213,5 @@ class Unit extends CI_Controller {
 		}
 		$arr.='</tr>';
 		return $arr;
-
-	
 	}
 }
