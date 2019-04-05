@@ -167,7 +167,7 @@
                                 <div class="col-lg-8">
                                     <select class="js-select2 form-control" id="bagiandari" name="bagiandari" style="width: 100%;" data-placeholder="Choose one.." disabled>
                                         <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                        <?php print_r($lol) ?>
+                                        <?php print_r($list_drop) ?>
                                     </select>
                                 </div>
                             </div>
@@ -183,40 +183,25 @@
         </div>
          <!-- Table -->
          <div class="block">
-            <div class="block-header block-header-default">
-                <h3 class="block-title">Table</h3>
-            </div>
+
             <div class="block-content">
                 <table class="table table-vcenter">
                     <thead>
                         <tr>
-                            <th class="text-center" style="width: 50px;">#</th>
+                            
                             <th>Nama Unit</th>
-                            <th class="d-none d-sm-table-cell" style="width: 15%;">Access</th>
-                            <th class="text-center" style="width: 100px;">Actions</th>
+                            <th>Actions</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th class="text-center" scope="row">1</th>
-                            <td>Susan Day</td>
-                            <td class="d-none d-sm-table-cell">
-                                <span class="badge badge-danger">Disabled</span>
-                            </td>
-                            <td class="text-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit">
-                                        <i class="fa fa-pencil"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Delete">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
+                        <?php foreach($list_tab as$menu){ echo $menu;?> 
+                        <?php } ?>
+                       
+                    </tbody>                    
                 </table>
             </div>
+            
         </div>
         <!-- END Table -->
     </div>
