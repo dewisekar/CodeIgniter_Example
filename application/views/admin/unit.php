@@ -124,22 +124,22 @@
 <main id="main-container">
     <!-- Page Content -->
     <div class="content">
-        <!-- Bootstrap Forms Validation -->
-        <div class="block">
+         <!-- Table -->
+         <div class="block">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Tambah unit</h3>
+                <h3 class="block-title">Daftar unit</h3>
                 <div class="block-options">
-                    
+                    <button type="button" name="submit" value="submit" class="btn btn-alt-primary" data-toggle="collapse" data-target="#form">Tambah Unit</button>
                 </div>
             </div>
             <div class="block-content">
-                <div class="row justify-content-center py-20">
-                    <div class="col-xl-6">
-                        <?php if($this->session->flashdata('success')){ ?>  
-                            <div class="alert alert-success text-center">  
-                                <?php echo $this->session->flashdata('success'); ?>  
-                            </div>  
-                        <?php } ?> 
+                <?php if($this->session->flashdata('success')){ ?>  
+                    <div class="alert alert-success text-center">  
+                        <?php echo $this->session->flashdata('success'); ?>  
+                    </div>  
+                <?php } ?> 
+                <div class="row justify-content-center py-20 collapse col-xl-12" id="form">
+                    <div class="col-xl-12">
                         <!-- jQuery Validation (.js-validation-bootstrap class is initialized in js/pages/be_forms_validation.js) -->
                         <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
                         <form class="js-validation-bootstrap" action="<?php base_url() ?>admin/unit/addUnit" method="post">
@@ -179,19 +179,11 @@
                         </form>
                     </div>
                 </div>
-            </div>
-        </div>
-         <!-- Table -->
-         <div class="block">
-
-            <div class="block-content">
                 <table class="table table-vcenter">
                     <thead>
-                        <tr>
-                            
+                        <tr>                            
                             <th>Nama Unit</th>
-                            <th>Actions</th>
-                            
+                            <th>Actions</th>                            
                         </tr>
                     </thead>
                     <tbody>
@@ -200,14 +192,11 @@
                        
                     </tbody>                    
                 </table>
-            </div>
-            
+            </div>            
         </div>
         <!-- END Table -->
     </div>
-    <!-- END Page Content -->
-    
- 
+    <!-- END Page Content -->   
     </div>
 </main>
 
