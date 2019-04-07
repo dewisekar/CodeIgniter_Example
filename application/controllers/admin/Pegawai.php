@@ -23,6 +23,8 @@ class Pegawai extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('user');
+        $this->load->model('unitmodel');
+        $this->load->model('pegawaimodel');
         if($this->session->userdata('logged_in') !== TRUE)
         {
             redirect('login');
@@ -36,12 +38,25 @@ class Pegawai extends CI_Controller {
 
     public function showForm()
     {
-        $this->load->view('admin/add-pegawai');
+        $arr = $this->unitmodel->get_unitx();
+        $data['unit'] = array($arr);
+        $this->load->view('admin/add-pegawai', $data);
     }
     
     public function logout()
     {
         $this->session->sess_destroy();
         redirect('login');
+    }
+
+    public function addPegawai()
+    {
+        if($this->input->post('submit'))
+		{
+            $this->pegawaimodel->addPegawai();
+            $this->session->set_flashdata('success', 'Pegawai berhasil ditambahkan!');  
+			redirect('/add-pegawai');         
+		}
+		
     }
 }

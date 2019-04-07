@@ -42,4 +42,45 @@ class UnitModel extends CI_Model
         }
 
     }
+
+    function get_unitx()
+	{	$arr = '';
+		$data = $this->db->get_where('unit',  array('id_parent' => 0))->result();
+		foreach($data as $menu)
+		{	
+            $counter = $this->db->get_where('unit',  array('id_parent' => $menu->id_unit));
+            if($counter->num_rows() < 1)
+			{					
+				$arr.= '<option value="'. $menu->id_unit .'">'.$menu->nama_unit.'</option>';
+			}			
+			else if($counter->num_rows() > 0)
+			{					
+				$arr.= $this->fetch_sub_menux($menu->nama_unit.' >', $menu->id_unit);	
+			}		
+	
+		}
+		return $arr;
+	}
+
+	function fetch_sub_menux($ngok, $parent)
+	{	
+		$arr = '';
+		$data = $this->db->get_where('unit',  array('id_parent' => $parent))->result();
+		foreach($data as $menu)
+		{	
+			$counter = $this->db->get_where('unit',  array('id_parent' => $menu->id_unit));
+            if($counter->num_rows() < 1)
+			{					
+				$arr.= '<option value="'. $menu->id_unit .'">'.$ngok.$menu->nama_unit.'</option>';
+			}			
+			else if($counter->num_rows() > 0)
+			{					
+				$arr.= $this->fetch_sub_menux($ngok.$menu->nama_unit.' > ', $menu->id_unit);	
+			}	
+	
+		}
+		return $arr;
+
+	
+	}
 }

@@ -137,40 +137,51 @@
                     <div class="col-xl-6">
                         <!-- jQuery Validation (.js-validation-bootstrap class is initialized in js/pages/be_forms_validation.js) -->
                         <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
-                        <form class="js-validation-bootstrap" action="be_forms_validation.html" method="post">
+                        <?php if($this->session->flashdata('success')){ ?>  
+                            <div class="alert alert-success text-center">  
+                                <?php echo $this->session->flashdata('success'); ?>  
+                            </div>  
+                        <?php } ?> 
+                        <?php echo form_open_multipart('admin/pegawai/addPegawai'); ?>
                             <div class="form-group row">
                                 <label class="col-lg-4 col-form-label" for="val-username">NIP<span class="text-danger">*</span></label>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="val-nama" name="val-nama" placeholder="Masukkan NIP...">
+                                    <input type="text" class="form-control" id="val-nama" name="nip" placeholder="Masukkan NIP..." required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-4 col-form-label" for="val-username">Nama<span class="text-danger">*</span></label>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Masukkan nama...">
+                                    <input type="text" class="form-control" id="val-username" name="nama" placeholder="Masukkan nama..." required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="val-username">Alamat<span class="text-danger">*</span></label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="val-username" name="alamat" placeholder="Masukkan nama..." required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-4 col-form-label" for="val-username">Tempat lahir<span class="text-danger">*</span></label>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Masukkan tempat lahir...">
+                                    <input type="text" class="form-control" id="val-username" name="tempatlahir" placeholder="Masukkan tempat lahir..." required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-4 col-form-label" for="val-username">Tanggal lahir<span class="text-danger">*</span></label>
                                 <div class="col-lg-8">
-                                    <input type="date" class="form-control" id="val-username" name="val-username" placeholder="Masukkan tempat lahir...">
+                                    <input type="date" class="form-control" id="val-username" name="tanggallahir" placeholder="Masukkan tempat lahir..." required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-4 col-form-label" for="val-username">Jenis kelamin<span class="text-danger">*</span></label>
                                 <div class="col-8">
                                     <div class="custom-control custom-radio custom-control-inline mb-5">
-                                        <input class="custom-control-input" type="radio" name="example-inline-radios" id="example-inline-radio1" value="option1" checked>
+                                        <input class="custom-control-input" type="radio" name="jk" id="example-inline-radio1" value="option1" checked>
                                         <label class="custom-control-label" for="example-inline-radio1">Laki-laki</label>
                                     </div>
                                     <div class="custom-control custom-radio custom-control-inline mb-5">
-                                        <input class="custom-control-input" type="radio" name="example-inline-radios" id="example-inline-radio2" value="option2">
+                                        <input class="custom-control-input" type="radio" name="jk" id="example-inline-radio2" value="option2">
                                         <label class="custom-control-label" for="example-inline-radio2">Perempuan</label>
                                     </div>
                                 </div>
@@ -178,67 +189,95 @@
                             <div class="form-group row">
                                 <label class="col-lg-4 col-form-label" for="val-select2">Golongan <span class="text-danger">*</span></label>
                                 <div class="col-lg-8">
-                                    <select class="js-select2 form-control" id="val-select2" name="val-select2" style="width: 100%;" data-placeholder="Choose one..">
+                                    <select class="js-select2 form-control" id="val-select2" name="golongan" style="width: 100%;" data-placeholder="Choose one.." required>
                                         <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                        <option value="html">HTML</option>
-                                        <option value="css">CSS</option>
+                                        <option value="I/a">I/a</option>
+                                        <option value="I/b">I/b</option>
+                                        <option value="I/c">I/c</option>
+                                        <option value="I/d">I/d</option>
+                                        <option value="II/a">II/a</option>
+                                        <option value="II/b">II/b</option>
+                                        <option value="II/c">II/c</option>
+                                        <option value="II/d">II/d</option>
+                                        <option value="III/a">III/a</option>
+                                        <option value="III/b">III/b</option>
+                                        <option value="III/c">III/c</option>
+                                        <option value="III/d">III/d</option>
+                                        <option value="IV/a">IV/a</option>
+                                        <option value="IV/b">IV/b</option>
+                                        <option value="IV/c">IV/c</option>
+                                        <option value="IV/d">IV/d</option>
+                                        <option value="IV/e">IV/e</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-4 col-form-label" for="val-username">Eselon</label>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Masukkan eselon...">
+                                    <input type="text" class="form-control" id="val-username" name="eselon" placeholder="Masukkan eselon...">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-lg-4 col-form-label" for="val-username">Jabatan<span class="text-danger">*</span></label>
+                                <label class="col-lg-4 col-form-label" for="val-username">Jabatan</label>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Masukkan jabatan...">
+                                    <input type="text" class="form-control" id="val-username" name="jabatan" placeholder="Masukkan jabatan..." >
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="val-select2">Tipe Pegawai <span class="text-danger">*</span></label>
+                                <div class="col-lg-8">
+                                    <select class="js-select2 form-control" id="val-select2" name="tipe" style="width: 100%;" data-placeholder="Choose one.." required>
+                                        <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                        <option value="Tetap">Tetap</option>
+                                        <option value="Honorer">Honorer</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-4 col-form-label" for="val-username">Tempat tugas<span class="text-danger">*</span></label>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Masukkan tempat tugas...">
+                                    <input type="text" class="form-control" id="val-username" name="tempattugas" placeholder="Masukkan tempat tugas..." required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-4 col-form-label" for="val-username">Agama<span class="text-danger">*</span></label>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Masukkan agama...">
+                                    <input type="text" class="form-control" id="val-username" name="agama" placeholder="Masukkan agama..." required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-4 col-form-label" for="val-username">Unit kerja<span class="text-danger">*</span></label>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Masukkan unit kerja...">
+                                    <select class="js-select2 form-control" id="val-select2" name="unitkerja" style="width: 100%;" data-placeholder="Choose one.." required>
+                                        <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                        <?php print_r($unit) ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-4 col-form-label" for="val-username">No. HP<span class="text-danger">*</span></label>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Masukkan No. HP...">
+                                    <input type="text" class="form-control" id="val-username" name="nohp" placeholder="Masukkan No. HP..." required>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="col-lg-4 col-form-label" for="val-username">NPWP<span class="text-danger">*</span></label>
+                                <label class="col-lg-4 col-form-label" for="val-username">NPWP</label>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="val-username" name="val-username" placeholder="Masukkan NPWP...">
+                                    <input type="text" class="form-control" id="val-username" name="npwp" placeholder="Masukkan NPWP..." >
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="col-lg-4 col-form-label" for="val-username">Foto</label>
                                 <div class="col-8">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="example-file-input-custom" name="example-file-input-custom">
+                                        <input type="file" class="custom-file-input" id="example-file-input-custom" name="foto">
                                         <label class="custom-file-label" for="example-file-input-custom">Choose file</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-lg-8 ml-auto">
-                                    <button type="submit" class="btn btn-alt-primary">Submit</button>
+                                    <button type="submit" class="btn btn-alt-primary" value="submit" name="submit">Submit</button>
                                 </div>
                             </div>
                         </form>
