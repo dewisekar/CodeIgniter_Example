@@ -48,4 +48,16 @@ class DetailPegawai extends CI_Controller {
 		}
 		
     }
+
+    public function uploadPhoto2($id)
+    {
+       
+        if($this->input->post('submit'))
+		{
+            $this->pegawaimodel->uploadPhoto($id); 
+            $this->session->set_flashdata('success', 'Foto berhasil diupload!');  
+			redirect('/detail-pegawai/'.$id);          
+		}
+		
+    }
 }

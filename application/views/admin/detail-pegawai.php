@@ -335,6 +335,11 @@
                 <!-- Page Content -->
                 <div class="content">
                     <!-- Bootstrap Design -->
+                        <?php if($this->session->flashdata('success')){ ?>  
+                            <div class="alert alert-success text-center">  
+                                <?php echo $this->session->flashdata('success'); ?>  
+                            </div>  
+                        <?php } ?> 
                         <div class="row">
                             <div class="col-md-6">
                                 <!-- Default Elements -->
@@ -342,9 +347,12 @@
                                     <div class="block-header block-header-default">
                                         <h3 class="block-title">Detail Pegawai</h3>
                                         <div class="block-options">
-                                            <button type="button" class="btn btn-alt-warning" onclick="editPeg()">
+                                            <button type="button" class="btn btn-alt-warning" id="buttonedit1" onclick="editPeg()">
                                             <i class="fa fa-edit"></i>
                                             Edit Pegawai</button>
+                                            <button type="button" class="btn btn-alt-danger" id="buttonedit2" onclick="cancelEditPeg()" style="display: none">
+                                            <i class="fa fa-times"></i>
+                                            Cancel</button>
                                         </div>
                                     </div>
                                     <div class="block-content">
@@ -380,29 +388,32 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-lg-4 col-form-label" for="val-username">Jenis kelamin<span class="text-danger">*</span></label>
-                                                <div class="col-8">
+                                                <label class="col-4">Jenis Kelamin</label>
                                                 <?php if($detpeg[0]->jk_pegawai == 'L'){ ?>
-                                                    <div class="custom-control custom-radio custom-control-inline mb-5">
-                                                        <input class="custom-control-input" type="radio" name="jk" id="jk" value="L"  disabled checked>
-                                                        <label class="custom-control-label" for="example-inline-radio1">Laki-laki</label>
+                                                <div class="col-4">
+                                                    <div class="custom-control custom-radio mb-5">
+                                                        <input class="custom-control-input" type="radio" name="jk" id="example-radio1" value="L" checked>
+                                                        <label class="custom-control-label" for="example-radio1">Laki-laki</label>
                                                     </div>
-                                                    <div class="custom-control custom-radio custom-control-inline mb-5">
-                                                        <input class="custom-control-input" type="radio" name="jk" id="jk2" value="P" disabled >
-                                                        <label class="custom-control-label" for="example-inline-radio2">Perempuan</label>
+                                                    <div class="custom-control custom-radio mb-5">
+                                                        <input class="custom-control-input" type="radio" name="jk" id="example-radio2" value="P">
+                                                        <label class="custom-control-label" for="example-radio2">Perempuan</label>
                                                     </div>
-                                                <?php } else { ?>
-                                                    <div class="custom-control custom-radio custom-control-inline mb-5">
-                                                        <input class="custom-control-input" type="radio" name="jk" id="jk" value="L"  disabled >
-                                                        <label class="custom-control-label" for="example-inline-radio1">Laki-laki</label>
-                                                    </div>
-                                                    <div class="custom-control custom-radio custom-control-inline mb-5">
-                                                        <input class="custom-control-input" type="radio" name="jk" id="jk2" value="P" disabled checked>
-                                                        <label class="custom-control-label" for="example-inline-radio2">Perempuan</label>
-                                                    </div>
-                                                <?php } ?>
                                                 </div>
+                                                <?php } else{ ?>
+                                                <div class="col-4">
+                                                    <div class="custom-control custom-radio mb-5">
+                                                        <input class="custom-control-input" type="radio" name="jk" id="example-radio1" value="L" >
+                                                        <label class="custom-control-label" for="example-radio1">Laki-laki</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio mb-5">
+                                                        <input class="custom-control-input" type="radio" name="jk" id="example-radio2" value="P" checked>
+                                                        <label class="custom-control-label" for="example-radio2">Perempuan</label>
+                                                    </div>
+                                                </div>
+                                                <?php } ?>
                                             </div>
+                                            
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label" for="val-select2">Golongan <span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
@@ -485,7 +496,7 @@
                                             </div>                                            
                                             <div class="form-group row">
                                                 <div class="col-lg-8 ml-auto">
-                                                    <button type="submit" class="btn btn-alt-primary" value="submit" name="submit">Submit</button>
+                                                    <button type="submit" class="btn btn-alt-primary" value="submit" name="submit" id="submit" style="display:none">Submit</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -499,24 +510,34 @@
                                     <div class="block-header block-header-default">
                                         <h3 class="block-title">Foto Pegawai</h3>
                                         <div class="block-options">
-                                            <button type="submit" class="btn btn-alt-primary" value="submit" name="submit">
+                                            <button type="button" class="btn btn-alt-warning" value="submit" name="submit" id="btn3" onclick="uploadPh()">
                                             <i class="fa fa-upload"></i>
                                             Upload Photo</button>
+                                            <button type="submit" style ="display: none" class="btn btn-alt-danger" value="submit" name="submit" id="btn4" onclick="cancelUploadPh()">
+                                            <i class="fa fa-times"></i>
+                                            Cancel</button>
                                         </div>
                                     </div>
                                     <div class="block-content">
-                                        <form action="be_forms_elements_bootstrap.html" method="post" onsubmit="return false;">
+                                        <?php echo form_open_multipart('admin/detailpegawai/uploadPhoto2/'.$detpeg[0]->id_pegawai); ?>
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label" for="val-username">Foto</label>
-                                                <div class="col-12">
+                                                <div class="col-12 text-center mb-10">
+                                                    <?php if($detpeg[0]->foto_pegawai != NULL ){ ?>
+                                                        <img src="../<?php base_url() ?>fotouploads/<?php echo $detpeg[0]->foto_pegawai; ?>"  width="100" height="100">
+                                                    <?php } else {?>
+                                                        <p> Belum ada foto </p>
+                                                    <?php } ?> 
+                                                </div>
+                                                <div class="col-12" id="formup" style="display: none">
                                                     <div class="custom-file">
                                                         <input type="file" class="custom-file-input" id="example-file-input-custom" name="foto">
                                                         <label class="custom-file-label" for="example-file-input-custom">Choose file</label>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-alt-primary">Upload</button>
+                                            <div class="form-group" id="formup2" style="display: none">
+                                                <button type="submit" class="btn btn-alt-primary" name="submit" value="submit">Upload</button>
                                             </div>
                                         </form>
                                     </div>
@@ -557,9 +578,6 @@
         <script src="../assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>
         <script src="../assets/js/plugins/jquery-validation/additional-methods.min.js"></script>
 
-        <script src="../assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
-        <script src="../assets/js/plugins/datatables/dataTables.bootstrap4.min.js"></script>
-        <script src="../assets/js/pages/be_tables_datatables.js"></script>
         <script>
             jQuery(function () {
                 // Init page helpers (Select2 plugin)
@@ -576,7 +594,60 @@
         <script>
             function editPeg()
             {
+                document.getElementById("buttonedit1").style.display = "none";
+                document.getElementById("buttonedit2").style.display = "block";
+                document.getElementById("submit").style.display = "block";
                 document.getElementById("nip").disabled = false;
+                document.getElementById("nama").disabled = false;
+                document.getElementById("alamat").disabled = false;
+                document.getElementById("tempatlahir").disabled = false;
+                document.getElementById("tanggallahir").disabled = false;
+                document.getElementById("golongan").disabled = false;
+                document.getElementById("eselon").disabled = false;
+                document.getElementById("jabatan").disabled = false;
+                document.getElementById("tipe").disabled = false;
+                document.getElementById("tempattugas").disabled = false;
+                document.getElementById("agama").disabled = false;
+                document.getElementById("unitkerja").disabled = false;
+                document.getElementById("nohp").disabled = false;
+                document.getElementById("npwp").disabled = false;
+            }
+            function cancelEditPeg()
+            {
+                document.getElementById("buttonedit1").style.display = "block";
+                document.getElementById("buttonedit2").style.display = "none";
+                document.getElementById("submit").style.display = "none";
+                document.getElementById("nip").disabled = true;
+                document.getElementById("nama").disabled = true;
+                document.getElementById("alamat").disabled = true;
+                document.getElementById("tempatlahir").disabled = true;
+                document.getElementById("tanggallahir").disabled = true;
+                document.getElementById("golongan").disabled = true;
+                document.getElementById("eselon").disabled = true;
+                document.getElementById("jabatan").disabled = true;
+                document.getElementById("tipe").disabled = true;
+                document.getElementById("tempattugas").disabled = true;
+                document.getElementById("agama").disabled = true;
+                document.getElementById("unitkerja").disabled = true;
+                document.getElementById("nohp").disabled = true;
+                document.getElementById("npwp").disabled = true;
+            }
+
+            function uploadPh()
+            {
+                document.getElementById("btn3").style.display = "none";
+                document.getElementById("btn4").style.display = "block";
+                document.getElementById("formup").style.display = "block";
+                document.getElementById("formup2").style.display = "block";
+
+            }
+            function cancelUploadPh()
+            {
+                document.getElementById("btn3").style.display = "block";
+                document.getElementById("btn4").style.display = "none";
+                document.getElementById("formup").style.display = "none";
+                document.getElementById("formup2").style.display = "none";
+                
             }
         </script>
     </body>
