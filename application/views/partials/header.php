@@ -23,8 +23,10 @@
         <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
 
         <!-- END Icons -->
+        <link rel="stylesheet" href="assets/js/plugins/datatables/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href="assets/js/plugins/select2/select2.min.css">
         <link rel="stylesheet" href="assets/js/plugins/select2/select2-bootstrap.min.css">
+        
         <!-- Stylesheets -->
         <!-- Codebase framework -->
         <link rel="stylesheet" id="css-main" href="assets/css/codebase.min.css">

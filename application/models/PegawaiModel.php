@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class PegawaiModel extends CI_Model 
 {
+    function getPegawai()
+    {
+        return $this->db->get('pegawaiview')->result();
+    }
+
     function addPegawai()
     {
         $config['upload_path']          = './fotouploads/';
@@ -65,4 +70,5 @@ class PegawaiModel extends CI_Model
                   $this->db->insert('pegawai', $data);       
         }     
     }
+
 }

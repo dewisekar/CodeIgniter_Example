@@ -32,8 +32,8 @@ class Pegawai extends CI_Controller {
     }
 
 	public function index()
-	{
-        $this->load->view('admin/pegawai');	
+	{   $data['pegawai'] = $this->pegawaimodel->getPegawai();
+        $this->load->view('admin/pegawai', $data);	
     }
 
     public function showForm()

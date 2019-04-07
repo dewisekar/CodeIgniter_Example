@@ -26,6 +26,10 @@
         <script src="assets/js/plugins/select2/select2.full.min.js"></script>
         <script src="assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>
         <script src="assets/js/plugins/jquery-validation/additional-methods.min.js"></script>
+
+        <script src="assets/js/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="assets/js/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+        <script src="assets/js/pages/be_tables_datatables.js"></script>
         <script>
             jQuery(function () {
                 // Init page helpers (Select2 plugin)
