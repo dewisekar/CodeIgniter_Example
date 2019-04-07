@@ -158,7 +158,7 @@
                             <div class="form-group row">
                                 <label class="col-lg-4 col-form-label" for="val-username">Alamat<span class="text-danger">*</span></label>
                                 <div class="col-lg-8">
-                                    <input type="text" class="form-control" id="val-username" name="alamat" placeholder="Masukkan nama..." required>
+                                    <input type="text" class="form-control" id="val-username" name="alamat" placeholder="Masukkan alamat..." required>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -177,11 +177,11 @@
                                 <label class="col-lg-4 col-form-label" for="val-username">Jenis kelamin<span class="text-danger">*</span></label>
                                 <div class="col-8">
                                     <div class="custom-control custom-radio custom-control-inline mb-5">
-                                        <input class="custom-control-input" type="radio" name="jk" id="example-inline-radio1" value="option1" checked>
+                                        <input class="custom-control-input" type="radio" name="jk" id="example-inline-radio1" value="L" checked>
                                         <label class="custom-control-label" for="example-inline-radio1">Laki-laki</label>
                                     </div>
                                     <div class="custom-control custom-radio custom-control-inline mb-5">
-                                        <input class="custom-control-input" type="radio" name="jk" id="example-inline-radio2" value="option2">
+                                        <input class="custom-control-input" type="radio" name="jk" id="example-inline-radio2" value="P">
                                         <label class="custom-control-label" for="example-inline-radio2">Perempuan</label>
                                     </div>
                                 </div>

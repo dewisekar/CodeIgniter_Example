@@ -66,7 +66,11 @@ class Unit extends CI_Controller {
 		$data = $this->db->get_where('unit',  array('id_parent' => 0))->result();
 		foreach($data as $menu)
 		{	
-			$arr.= '<option value="'. $menu->id_unit .'">'.$menu->nama_unit.'</option>';
+			$pegawai = $this->db->get_where('pegawai',  array('id_unit' => $menu->id_unit));
+			if($pegawai->num_rows() < 1)
+			{
+				$arr.= '<option value="'. $menu->id_unit .'">'.$menu->nama_unit.'</option>';
+			}
 			$counter = $this->db->get_where('unit',  array('id_parent' => $menu->id_unit));
 			if($counter->num_rows() > 0)
 			{					
@@ -83,7 +87,11 @@ class Unit extends CI_Controller {
 		$data = $this->db->get_where('unit',  array('id_parent' => $parent))->result();
 		foreach($data as $menu)
 		{	
-			$arr.= '<option value="'. $menu->id_unit .'">'.$ngok.$menu->nama_unit.'</option>';
+			$pegawai = $this->db->get_where('pegawai',  array('id_unit' => $menu->id_unit));
+			if($pegawai->num_rows() < 1)
+			{
+				$arr.= '<option value="'. $menu->id_unit .'">'.$menu->nama_unit.'</option>';
+			}
 			$counter = $this->db->get_where('unit',  array('id_parent' => $menu->id_unit));				
 			if($counter->num_rows() > 0)
 			{					
@@ -128,7 +136,7 @@ class Unit extends CI_Controller {
 								</div>
 							</div>
 							<div class="block-content">
-							<p>Semua data pegawai dan subunit dari unit ini akan ikut terhapus juga. '.$menu->nama_unit.'</p>
+							<p>Semua data pegawai dan subunit dari unit ini akan ikut terhapus juga. </p>
 							
 							</div>
 						</div>
@@ -188,7 +196,7 @@ class Unit extends CI_Controller {
 								</div>
 							</div>
 							<div class="block-content">
-							<p>Semua data pegawai dan subunit dari unit ini akan ikut terhapus juga. '.$menu->nama_unit.'</p>
+							<p>Semua data pegawai dan subunit dari unit ini akan ikut terhapus juga.</p>
 							
 							</div>
 						</div>

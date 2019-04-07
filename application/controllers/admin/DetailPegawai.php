@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pegawai extends CI_Controller {
+class DetailPegawai extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -23,7 +23,6 @@ class Pegawai extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('user');
-        $this->load->model('unitmodel');
         $this->load->model('pegawaimodel');
         if($this->session->userdata('logged_in') !== TRUE)
         {
@@ -31,38 +30,22 @@ class Pegawai extends CI_Controller {
         }
     }
 
-    public function index()
+    public function showDetail($id)
 	{   
-        $data['counter'] = 1;
-        $data['pegawai'] = $this->pegawaimodel->getPegawai();
-        $this->load->view('admin/pegawai', $data);	
+        $data['detpeg'] = $this->db->get_where('pegawaiview', array('id_pegawai' => $id))->result();
+       	$this->load->view('admin/detail-pegawai', $data);
     }
+    
 
-    public function showForm()
+    public function uploadPhoto($id)
     {
-        $arr = $this->unitmodel->get_unitx();
-        $data['unit'] = array($arr);
-        $this->load->view('admin/add-pegawai', $data);
-    }
-
-    public function addPegawai()
-    {
+       
         if($this->input->post('submit'))
 		{
-            $this->pegawaimodel->addPegawai();
-            $this->session->set_flashdata('success', 'Pegawai berhasil ditambahkan!');  
-			redirect('/add-pegawai');         
+            $this->pegawaimodel->uploadPhoto($id); 
+            $this->session->set_flashdata('success', 'Foto berhasil diupload!');  
+			redirect('/pegawai');          
 		}
 		
-    }
-
-    public function deletePegawai($id)
-    {
-        if($this->input->post('submit'))
-		{
-			$this->pegawaimodel->delete_pegawai($id);
-			$this->session->set_flashdata('success', 'Pegawai berhasil dihapus!');  
-			redirect('/pegawai');
-		}
     }
 }

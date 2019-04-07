@@ -58,4 +58,5 @@ $route['dashboard'] = 'admin/dashboard';
 $route['pegawai'] = 'admin/pegawai';
 $route['unit'] = 'admin/unit';
 $route['add-pegawai'] = 'admin/pegawai/showForm';
+$route['detail-pegawai/(:any)'] = 'admin/detailpegawai/showDetail/$1';
 

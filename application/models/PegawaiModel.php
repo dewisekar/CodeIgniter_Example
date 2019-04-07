@@ -71,4 +71,47 @@ class PegawaiModel extends CI_Model
         }     
     }
 
+    function uploadPhoto($id)
+    {
+        $photo = $this->db->get_where('pegawaiview', array('id_pegawai' => $id))->result();
+        if($photo[0]->foto_pegawai !=NULL)
+        {
+            $linkfoto = './fotouploads/'.$photo[0]->foto_pegawai;
+            unlink($linkfoto);           
+        }
+
+        $config['upload_path']          = './fotouploads/';
+        $config['allowed_types']        = 'gif|jpg|png';
+		$config['max_size']             = 100000;
+		$config['max_width']            = 1024;
+        $config['max_height']           = 768;
+        
+        $this->load->library('upload', $config);
+        $this->upload->initialize($config);
+        if ( ! $this->upload->do_upload('foto'))
+        {
+            $this->upload->display_errors();
+        }
+        else
+        {
+            $upload_data = $this->upload->data();
+            $data = array(
+                "foto_pegawai" => $upload_data['file_name']
+             );
+             $this->db->where('id_pegawai', $id);
+             $this->db->update('pegawai', $data);   
+        }               
+    }
+
+    function delete_pegawai($id)
+    {
+        $photo = $this->db->get_where('pegawai', array('id_pegawai' => $id))->result();
+        if($photo[0]->foto_pegawai !=NULL)
+        {
+            $linkfoto = './fotouploads/'.$photo[0]->foto_pegawai;
+            unlink($linkfoto);           
+        }
+        $this->db->delete('pegawai', array('id_pegawai' => $id)); 
+    }
+
 }
