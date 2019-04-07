@@ -24,6 +24,7 @@ class DetailPegawai extends CI_Controller {
         parent::__construct();
         $this->load->model('user');
         $this->load->model('pegawaimodel');
+        $this->load->model('unitmodel');
         if($this->session->userdata('logged_in') !== TRUE)
         {
             redirect('login');
@@ -32,6 +33,8 @@ class DetailPegawai extends CI_Controller {
 
     public function showDetail($id)
 	{   
+        $arr = $this->unitmodel->get_unitx();
+        $data['unit'] = array($arr);
         $data['detpeg'] = $this->db->get_where('pegawaiview', array('id_pegawai' => $id))->result();
        	$this->load->view('admin/detail-pegawai', $data);
     }
@@ -60,4 +63,16 @@ class DetailPegawai extends CI_Controller {
 		}
 		
     }
+
+    public function editPegawai($id)
+    {
+        if($this->input->post('submit'))
+		{
+            $this->pegawaimodel->edit_pegawai($id); 
+            $this->session->set_flashdata('success', 'Data pegawai berhasil diubah!');  
+			redirect('/detail-pegawai/'.$id);          
+		}
+		
+    }
+
 }

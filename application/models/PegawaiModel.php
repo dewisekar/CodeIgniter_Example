@@ -96,10 +96,10 @@ class PegawaiModel extends CI_Model
         {
             $upload_data = $this->upload->data();
             $data = array(
-                "foto_pegawai" => $upload_data['file_name']
-             );
-             $this->db->where('id_pegawai', $id);
-             $this->db->update('pegawai', $data);   
+               "foto_pegawai" => $upload_data['file_name']
+            );
+            $this->db->where('id_pegawai', $id);
+            $this->db->update('pegawai', $data);   
         }               
     }
 
@@ -112,6 +112,31 @@ class PegawaiModel extends CI_Model
             unlink($linkfoto);           
         }
         $this->db->delete('pegawai', array('id_pegawai' => $id)); 
+    }
+
+    function edit_pegawai($id)
+    {
+        $data = array(
+            "nip_pegawai" => $this->input->post('nip'),
+            "nama_pegawai" => $this->input->post('nama'),
+            "alamat_pegawai" => $this->input->post('alamat'),
+            "nip_pegawai" => $this->input->post('nip'),
+            "tempatlahir_pegawai" => $this->input->post('tempatlahir'),
+            "tanggallahir_pegawai" => $this->input->post('tanggallahir'),
+            "nip_pegawai" => $this->input->post('nip'),
+            "jk_pegawai" => $this->input->post('jk'),
+            "golongan_pegawai" => $this->input->post('golongan'),
+            "eselon_pegawai" => $this->input->post('eselon'),
+            "jabatan_pegawai" => $this->input->post('jabatan'),
+            "tipe_pegawai" => $this->input->post('tipe'),
+            "tempattugas_pegawai" => $this->input->post('tempattugas'),
+            "agama_pegawai" => $this->input->post('agama'),
+            "id_unit" => $this->input->post('unitkerja'),
+            "nohp_pegawai" => $this->input->post('nohp'),
+            "npwp_pegawai" => $this->input->post('npwp')
+        );
+        $this->db->where('id_pegawai', $id);
+        $this->db->update('pegawai', $data);  
     }
 
 }

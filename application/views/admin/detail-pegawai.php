@@ -356,7 +356,7 @@
                                         </div>
                                     </div>
                                     <div class="block-content">
-                                        <form action="be_forms_elements_bootstrap.html" method="post" enctype="multipart/form-data" onsubmit="return false;">
+                                        <form action="<?php echo base_url() ?>admin/detailpegawai/editPegawai/<?php echo $detpeg[0]->id_pegawai; ?>" method="post" >
                                             <div class="form-group row">
                                                 <label class="col-lg-4 col-form-label" for="val-username">NIP<span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
@@ -477,7 +477,7 @@
                                                 <label class="col-lg-4 col-form-label" for="val-username">Unit kerja<span class="text-danger">*</span></label>
                                                 <div class="col-lg-8">
                                                     <select class="js-select2 form-control" id="unitkerja" name="unitkerja" style="width: 100%;" data-placeholder="Choose one.." value="<?php echo $detpeg[0]->nama_unit; ?>" required disabled>
-                                                        <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                                        <option value="<?php echo $detpeg[0]->id_unit; ?>"><?php echo $detpeg[0]->nama_unit; ?></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
                                                         <?php print_r($unit) ?>
                                                     </select>
                                                 </div>
