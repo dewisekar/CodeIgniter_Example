@@ -82,5 +82,59 @@ class UnitModel extends CI_Model
 		return $arr;
 
 	
+    }
+    
+    function get_unit3()
+	{	$arr = '';
+		$data = $this->db->get_where('unit',  array('id_parent' => 0))->result();
+		foreach($data as $menu)
+		{	
+			$counter = $this->db->get_where('unit',  array('id_parent' => $menu->id_unit));
+			if($counter->num_rows() > 0)
+			{		
+				$arr.= '<li>
+				<a class="nav-submenu" data-toggle="nav-submenu" href="#">'.$menu->nama_unit.'</a>			
+				';			
+				$arr.= $this->fetch_sub_menu3($menu->id_unit, '>');
+				$arr.='</li>';	
+			}
+			else{
+				$arr.= '<li>
+				<a href="http://localhost/ci1/dashboard" class=""><span class="sidebar-mini-hide">Dashboard</span></a>
+				</li>
+				';
+			}	
+		}
+		
+		return $arr;
+	}
+
+	function fetch_sub_menu3($parent, $ngok)
+	{	
+		$arr = '<ul>';
+		$data = $this->db->get_where('unit',  array('id_parent' => $parent))->result();
+		foreach($data as $menu)
+		{	
+			$arr.= '';
+			$counter = $this->db->get_where('unit',  array('id_parent' => $menu->id_unit));				
+			if($counter->num_rows() > 0)
+			{					
+				$arr.= '<li>
+				<a class="nav-submenu" data-toggle="nav-submenu" href="#">'.$menu->nama_unit.'</a>			
+				';			
+				$arr.= $this->fetch_sub_menu3($menu->id_unit, '>');
+				$arr.='</li>';	
+			}
+			else
+			{
+				$arr.= '<li>
+				<a href="'.base_url().'unit-pegawai/'.$menu->id_unit.'">'.$menu->nama_unit.'</a>
+				</li>
+				';
+			}	
+	
+		}
+		$arr.='</ul>';
+		return $arr;
 	}
 }

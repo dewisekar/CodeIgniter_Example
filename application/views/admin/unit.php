@@ -88,23 +88,9 @@
                         <a href="<?php echo base_url() ?>add-pegawai" class=""><i class="fa fa-plus"></i><span class="sidebar-mini-hide">Tambah Pegawai</span></a>
                     </li>
                     <li>
-                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-energy"></i><span class="sidebar-mini-hide">Elements</span></a>
+                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-energy"></i><span class="sidebar-mini-hide">Daftar Unit</span></a>
                         <ul>
-                            <li>
-                                <a href="be_ui_images.html">Images</a>
-                            </li>
-                            <li>
-                                <a href="be_ui_animations.html">Animations</a>
-                            </li>
-                            <li>
-                                <a href="be_ui_ribbons.html">Ribbons</a>
-                            </li>
-                            <li>
-                                <a href="be_ui_timeline.html">Timeline</a>
-                            </li>
-                            <li>
-                                <a href="be_ui_color_themes.html">Color Themes</a>
-                            </li>
+                            <?php foreach($list_tree as $bye){ echo $bye;}  ?>
                         </ul>
                     </li>
                     <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Manajemen Unit</span></li>

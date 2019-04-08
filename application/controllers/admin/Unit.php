@@ -34,8 +34,10 @@ class Unit extends CI_Controller {
 	{
 		$unit = $this->get_unit();
 		$unit2 = $this->get_unit2();
+		$unit3 = $this->unitmodel->get_unit3();
 		$data['list_drop'] = array($unit);
 		$data['list_tab'] = array($unit2);
+		$data['list_tree'] = array($unit3);
 		$this->load->view('admin/unit', $data);
 		
 	}
@@ -222,4 +224,8 @@ class Unit extends CI_Controller {
 		$arr.='</tr>';
 		return $arr;
 	}
+
+	
+
+
 }

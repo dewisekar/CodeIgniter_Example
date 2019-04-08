@@ -65,4 +65,11 @@ class Pegawai extends CI_Controller {
 			redirect('/pegawai');
 		}
     }
+
+    public function pegawaiBiro($id)
+    {
+        $data['pegawaibiro'] =  $this->db->get_where('pegawaiview', array('id_unit' => $id))->result();
+        $data['list_tree'] =  array($this->unitmodel->get_unit3());
+        $this->load->view('admin/pegawai-biro', $data);
+    }
 }

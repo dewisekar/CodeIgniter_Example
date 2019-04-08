@@ -168,11 +168,8 @@
                             <?php } ?>
                             <td class="text-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" >
+                                    <button type="button" class="btn btn-sm btn-secondary" onclick="window.location.href='<?php base_url() ?>detail-pegawai/<?php echo $peg->id_pegawai; ?>'">
                                         <i class="fa fa-search"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" >
-                                        <i class="fa fa-pencil"></i>
                                     </button>
                                     <button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modal-upload<?php echo $peg->id_pegawai; ?>">
                                         <i class="fa fa-upload"></i>
