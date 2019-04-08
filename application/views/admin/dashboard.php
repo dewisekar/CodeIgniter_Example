@@ -108,7 +108,16 @@
 
 <!-- Main Container -->
 <main id="main-container">
-    <!-- Page Content -->
+    <div class="bg-image bg-image-bottom" style="background-image: url('../assets/img/photos/photo34@2x.jpg');">   
+        <div class="bg-primary-dark-op">
+            <div class="content content-top text-center overflow-hidden">
+                <div class="pt-50 pb-20">
+                    <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">Dashboard</h1>
+                    <h2 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp">Selamat datang di Sistem Informasi Pegawai</h2>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="content">
     
     </div>

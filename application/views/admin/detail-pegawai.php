@@ -146,7 +146,7 @@
                 </div>
                 <!-- END Header Loader -->
             </header>
-            <title>Dashboard - Manajemen Pegawai</title>
+            <title>Detail Pegawai</title>
             <!-- END Header -->      
             <nav id="sidebar">
                 <!-- Sidebar Scroll Container -->

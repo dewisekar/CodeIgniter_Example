@@ -100,7 +100,7 @@ class UnitModel extends CI_Model
 			}
 			else{
 				$arr.= '<li>
-				<a href="http://localhost/ci1/dashboard" class=""><span class="sidebar-mini-hide">Dashboard</span></a>
+				<a href="'.base_url().'unit-pegawai/'.$menu->id_unit.'">'.$menu->nama_unit.'</a>
 				</li>
 				';
 			}	

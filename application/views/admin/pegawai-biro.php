@@ -329,7 +329,13 @@
                         <?php } ?> 
                         <div class="block-header block-header-default">
                             <h3 class="block-title">Daftar Pegawai Unit <?php echo $unit[0]->nama_unit; ?></td></h3>
+                            <div class="block-options">
+                                <button type="button" class="btn btn-alt-Primary" id="buttonedit1" onclick="window.location.href='<?php base_url() ?>../admin/pegawai/export2/<?php echo $unit[0]->id_unit; ?>'">
+                                <i class="fa fa-download"></i>
+                                Download Data Pegawai</button>
+                            </div>
                         </div>
+                        
                         <div class="block-content block-content-full" style="overflow-x: auto;">
                             <!-- DataTables init on table by adding .js-dataTable-full-pagination class, functionality initialized in js/pages/be_tables_datatables.js -->
                             <table class="table table-bordered table-striped table-vcenter js-dataTable-full-pagination">

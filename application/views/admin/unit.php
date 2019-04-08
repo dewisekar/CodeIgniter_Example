@@ -1,5 +1,5 @@
 <?php $this->load->view("partials/header.php") ?>
-<title>Dashboard - Manajemen Pegawai</title>
+<title>Manajemen Unit</title>
 <!-- END Header -->      
 <nav id="sidebar">
     <!-- Sidebar Scroll Container -->
