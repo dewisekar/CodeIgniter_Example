@@ -115,9 +115,6 @@ class Unit extends CI_Controller {
 			<td>'.$menu->nama_unit.'</td> 
 			<td class="text-left">
 				<div class="btn-group">
-					<button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit">
-						<i class="fa fa-pencil"></i>
-					</button>
 					<button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modal-fadein'.$menu->id_unit.'">
 						<i class="fa fa-trash"></i>
 					</button>
@@ -175,9 +172,6 @@ class Unit extends CI_Controller {
 			<td>'.$ngok.$menu->nama_unit.'</td> 
 			<td class="text-left">
 				<div class="btn-group">
-					<button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="Edit">
-						<i class="fa fa-pencil"></i>
-					</button>
 					<button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modal-fadein'.$menu->id_unit.'">
 						<i class="fa fa-trash"></i>
 					</button>

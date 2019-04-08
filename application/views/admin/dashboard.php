@@ -76,42 +76,28 @@
 
             <!-- Side Navigation -->
             <div class="content-side content-side-full">
-                <ul class="nav-main">
-                    <li class="">
-                        <a href="<?php echo base_url() ?>dashboard" class="active"><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>
-                    </li>
-                    <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Manajemen Pegawai</span></li>
-                    <li class="">
-                        <a href="<?php echo base_url() ?>pegawai" class=""><i class="fa fa-users"></i><span class="sidebar-mini-hide">Daftar Pegawai</span></a>
-                    </li>
-                    <li class="">
-                        <a href="<?php echo base_url() ?>add-pegawai" class=""><i class="fa fa-plus"></i><span class="sidebar-mini-hide">Tambah Pegawai</span></a>
-                    </li>
-                    <li>
-                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-energy"></i><span class="sidebar-mini-hide">Elements</span></a>
-                        <ul>
-                            <li>
-                                <a href="be_ui_images.html">Images</a>
-                            </li>
-                            <li>
-                                <a href="be_ui_animations.html">Animations</a>
-                            </li>
-                            <li>
-                                <a href="be_ui_ribbons.html">Ribbons</a>
-                            </li>
-                            <li>
-                                <a href="be_ui_timeline.html">Timeline</a>
-                            </li>
-                            <li>
-                                <a href="be_ui_color_themes.html">Color Themes</a>
-                            </li>
-                        </ul>                        
-                    </li>
-                    <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Manajemen Unit</span></li>
-                    <li class="">
-                        <a href="<?php echo base_url() ?>unit" class=""><i class="si si-cup"></i><span class="sidebar-mini-hide">Kelola Unit</span></a>
-                    </li>
-                </ul>
+            <ul class="nav-main">
+                <li class="active">
+                    <a href="<?php echo base_url() ?>dashboard" class="active"><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>
+                </li>
+                <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Manajemen Pegawai</span></li>
+                <li class="">
+                    <a href="<?php echo base_url() ?>pegawai" class=""><i class="fa fa-users"></i><span class="sidebar-mini-hide">Daftar Pegawai</span></a>
+                </li>
+                <li class="">
+                    <a href="<?php echo base_url() ?>add-pegawai" class=""><i class="fa fa-plus"></i><span class="sidebar-mini-hide">Tambah Pegawai</span></a>
+                </li>
+                <li>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-list"></i><span class="sidebar-mini-hide">Daftar Unit</span></a>
+                    <ul>
+                        <?php foreach($list_tree as $bye){ echo $bye;}  ?>
+                    </ul>
+                </li>
+                <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Manajemen Unit</span></li>
+                <li class="">
+                    <a href="<?php echo base_url() ?>unit" class=""><i class="fa fa-list"></i><span class="sidebar-mini-hide">Kelola Unit</span></a>
+                </li>
+            </ul>
             </div>
             <!-- END Side Navigation -->
         </div>

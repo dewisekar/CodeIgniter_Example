@@ -33,6 +33,7 @@ class Pegawai extends CI_Controller {
 
     public function index()
 	{   
+        $data['list_tree'] =  array($this->unitmodel->get_unit3());
         $data['counter'] = 1;
         $data['pegawai'] = $this->pegawaimodel->getPegawai();
         $this->load->view('admin/pegawai', $data);	
@@ -40,6 +41,7 @@ class Pegawai extends CI_Controller {
 
     public function showForm()
     {
+        $data['list_tree'] =  array($this->unitmodel->get_unit3());
         $arr = $this->unitmodel->get_unitx();
         $data['unit'] = array($arr);
         $this->load->view('admin/add-pegawai', $data);
@@ -66,9 +68,22 @@ class Pegawai extends CI_Controller {
 		}
     }
 
+    public function deletePegawai2($id)
+    {
+        if($this->input->post('submit'))
+		{
+            $arr = $this->db->get_where('pegawaiview', array('id_pegawai' => $id))->result();
+			$this->pegawaimodel->delete_pegawai($id);
+			$this->session->set_flashdata('success', 'Pegawai berhasil dihapus!');  
+			redirect('unit-pegawai/'.$arr[0]->id_unit);
+		}
+    }
+
     public function pegawaiBiro($id)
     {
         $data['pegawaibiro'] =  $this->db->get_where('pegawaiview', array('id_unit' => $id))->result();
+        $data['counter'] = $this->db->get_where('pegawaiview', array('id_unit' => $id))->num_rows();
+        $data['unit'] = $this->db->get_where('unit', array('id_unit' => $id))->result();
         $data['list_tree'] =  array($this->unitmodel->get_unit3());
         $this->load->view('admin/pegawai-biro', $data);
     }

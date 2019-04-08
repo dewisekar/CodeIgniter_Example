@@ -87,15 +87,15 @@
                     <li class="">
                         <a href="<?php echo base_url() ?>add-pegawai" class=""><i class="fa fa-plus"></i><span class="sidebar-mini-hide">Tambah Pegawai</span></a>
                     </li>
-                    <li>
-                        <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-energy"></i><span class="sidebar-mini-hide">Daftar Unit</span></a>
+                    <li class="">
+                        <a class="nav-submenu" data-toggle="nav-submenu" href="#" class=""><i class="si si-list"></i><span class="sidebar-mini-hide">Daftar Unit</span></a>
                         <ul>
                             <?php foreach($list_tree as $bye){ echo $bye;}  ?>
                         </ul>
                     </li>
                     <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Manajemen Unit</span></li>
                     <li class="">
-                        <a href="<?php echo base_url() ?>unit" class="active"><i class="si si-list"></i><span class="sidebar-mini-hide">Kelola Unit</span></a>
+                        <a href="<?php echo base_url() ?>unit" class="active"><i class="fa fa-list"></i><span class="sidebar-mini-hide">Kelola Unit</span></a>
                     </li>
                 </ul>
             </div>

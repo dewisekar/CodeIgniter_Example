@@ -22,7 +22,8 @@ class Dashboard extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('user');
+		$this->load->model('user');
+		$this->load->model('unitmodel');
         if($this->session->userdata('logged_in') !== TRUE)
         {
             redirect('login');
@@ -31,7 +32,8 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{
-        $this->load->view('admin/dashboard');	
+		$data['list_tree'] =  array($this->unitmodel->get_unit3());
+        $this->load->view('admin/dashboard', $data);	
     }
     
     public function logout()

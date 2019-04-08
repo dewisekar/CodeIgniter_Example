@@ -33,6 +33,7 @@ class DetailPegawai extends CI_Controller {
 
     public function showDetail($id)
 	{   
+        $data['list_tree'] =  array($this->unitmodel->get_unit3());
         $arr = $this->unitmodel->get_unitx();
         $data['unit'] = array($arr);
         $data['detpeg'] = $this->db->get_where('pegawaiview', array('id_pegawai' => $id))->result();
@@ -48,6 +49,19 @@ class DetailPegawai extends CI_Controller {
             $this->pegawaimodel->uploadPhoto($id); 
             $this->session->set_flashdata('success', 'Foto berhasil diupload!');  
 			redirect('/pegawai');          
+		}
+		
+    }
+
+    public function uploadPhoto3($id)
+    {
+       
+        if($this->input->post('submit'))
+		{
+            $arr = $this->db->get_where('pegawaiview', array('id_pegawai' => $id))->result();
+            $this->pegawaimodel->uploadPhoto($id); 
+            $this->session->set_flashdata('success', 'Foto berhasil diupload!');  
+			redirect('unit-pegawai/'.$arr[0]->id_unit);          
 		}
 		
     }

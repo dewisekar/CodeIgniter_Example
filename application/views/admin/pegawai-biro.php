@@ -209,7 +209,7 @@
                 </div>
                 <!-- END Header Loader -->
             </header>
-            <title>Dashboard - Manajemen Pegawai</title>
+            <title>Unit <?php echo $unit[0]->nama_unit; ?></title>
             <!-- END Header -->      
             <nav id="sidebar">
                 <!-- Sidebar Scroll Container -->
@@ -292,20 +292,20 @@
                                 </li>
                                 <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Manajemen Pegawai</span></li>
                                 <li class="">
-                                    <a href="<?php echo base_url() ?>pegawai" class="active"><i class="fa fa-users"></i><span class="sidebar-mini-hide">Daftar Pegawai</span></a>
+                                    <a href="<?php echo base_url() ?>pegawai" class=""><i class="fa fa-users"></i><span class="sidebar-mini-hide">Daftar Pegawai</span></a>
                                 </li>
                                 <li class="">
                                     <a href="<?php echo base_url() ?>add-pegawai" class=""><i class="fa fa-plus"></i><span class="sidebar-mini-hide">Tambah Pegawai</span></a>
                                 </li>
-                                <li>
-                                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-energy"></i><span class="sidebar-mini-hide">Daftar Unit</span></a>
+                                <li class="active">
+                                    <a class="nav-submenu" data-toggle="nav-submenu" href="#" class="active"><i class="si si-list"></i><span class="sidebar-mini-hide">Daftar Unit</span></a>
                                     <ul>
                                         <?php foreach($list_tree as $bye){ echo $bye;}  ?>
                                     </ul>
                                 </li>
                                 <li class="nav-main-heading"><span class="sidebar-mini-visible">UI</span><span class="sidebar-mini-hidden">Manajemen Unit</span></li>
                                 <li class="">
-                                    <a href="<?php echo base_url() ?>unit" class=""><i class="si si-cup"></i><span class="sidebar-mini-hide">Daftar Unit</span></a>
+                                    <a href="<?php echo base_url() ?>unit" class=""><i class="fa fa-list"></i><span class="sidebar-mini-hide">Kelola Unit</span></a>
                                 </li>
                             </ul>
                         </div>
@@ -328,7 +328,7 @@
                             </div>  
                         <?php } ?> 
                         <div class="block-header block-header-default">
-                            <h3 class="block-title">Daftar Pegawai</h3>
+                            <h3 class="block-title">Daftar Pegawai Unit <?php echo $unit[0]->nama_unit; ?></td></h3>
                         </div>
                         <div class="block-content block-content-full" style="overflow-x: auto;">
                             <!-- DataTables init on table by adding .js-dataTable-full-pagination class, functionality initialized in js/pages/be_tables_datatables.js -->
@@ -347,7 +347,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <?php foreach ($pegawaibiro as $peg) { ?>
+                                <?php if($counter > 0) {foreach ($pegawaibiro as $peg) { ?>
                                     <tr>
                                         <td class="text-center"><?php echo 1; ?>.</td>
                                         <td class="text-center"><?php echo $peg->nip_pegawai; ?></td>
@@ -364,7 +364,7 @@
                                         <?php } ?>
                                         <td class="text-center">
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-secondary" onclick="window.location.href='<?php base_url() ?>detail-pegawai/<?php echo $peg->id_pegawai; ?>'">
+                                                <button type="button" class="btn btn-sm btn-secondary" onclick="window.location.href='<?php base_url() ?>../detail-pegawai/<?php echo $peg->id_pegawai; ?>'">
                                                     <i class="fa fa-search"></i>
                                                 </button>
                                                 <button type="button" class="btn btn-sm btn-secondary" data-toggle="modal" data-target="#modal-upload<?php echo $peg->id_pegawai; ?>">
@@ -376,7 +376,70 @@
                                             </div>
                                         </td>
                                     </tr>
-                                <?php } ?>
+                                    <!-- Fade In Modal -->
+                                    <div class="modal fade" id="modal-upload<?php echo $peg->id_pegawai; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-fadein" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <?php echo form_open_multipart('admin/detailpegawai/uploadPhoto3/'.$peg->id_pegawai); ?>
+                                                    <div class="block block-themed block-transparent mb-0">
+                                                        <div class="block-header bg-primary-dark">
+                                                            <h3 class="block-title">Upload Foto</h3>
+                                                            <div class="block-options">
+                                                                <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                                                                    <i class="si si-close"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="block-content">
+                                                            <div class="form-group row">
+                                                                <label class="col-lg-4 col-form-label" for="val-username">Upload Foto</label>
+                                                                <div class="col-8">
+                                                                    <div class="custom-file">
+                                                                        <input type="file" class="custom-file-input" id="example-file-input-custom" name="foto" required>
+                                                                        <label class="custom-file-label" for="example-file-input-custom">Choose file</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</button>
+                                                        <button type="submit" name="submit" value="submit" class="btn btn-alt-success">
+                                                            <i class="fa fa-upload"></i> Upload
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END Fade In Modal -->
+                                    <!-- Fade In Modal -->
+                                    <div class="modal fade" id="modal-delete<?php echo $peg->id_pegawai; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-fadein" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="block block-themed block-transparent mb-0">
+                                                    <div class="block-header bg-pulse-light">
+                                                        <h3 class="block-title">Apakah anda yakin anda ingin menghapus pegawai ini? </h3>
+                                                        <div class="block-options">
+                                                            <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                                                                <i class="si si-close"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Cancel</button>
+                                                    <form action="<?php echo base_url(); ?>admin/pegawai/deletePegawai2/<?php echo $peg->id_pegawai; ?>" method="post">
+                                                        <button type="submit" name="submit" class="btn btn-alt-danger"  value="submit">
+                                                            <i class="fa fa-trash"></i> Hapus
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END Fade In Modal -->
+                                <?php }} ?>
                                 </tbody>
                             </table>
                         </div>
